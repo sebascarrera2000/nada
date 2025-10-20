@@ -4,23 +4,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agregar Mascota</title>
+<title>Inscribe a tu Mascota</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 :root {
   --primary: #ff4d6d;
+  --primary-light: #ff8fa3;
   --secondary: #fff5f7;
   --dark: #2b2b2b;
-  --radius: 16px;
+  --radius: 14px;
 }
 
 /* GENERAL */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, var(--secondary), #ffd6de);
+  background: linear-gradient(180deg, #ffe6eb, #fff5f7);
   color: var(--dark);
   overflow-x: hidden;
 }
@@ -78,24 +79,61 @@ nav .actions a.signup {
 }
 nav .actions a:hover { transform: scale(1.05); }
 
-/* CONTENEDOR PRINCIPAL */
+/* HERO HEADER */
+.hero {
+  background: linear-gradient(120deg, var(--primary), var(--primary-light));
+  color: #fff;
+  padding: 120px 8% 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 70px;
+  border-bottom-left-radius: 120px;
+  border-bottom-right-radius: 120px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  opacity: 0.95;
+}
+
+/* CONTENEDOR */
 .container {
   max-width: 700px;
-  margin: 130px auto 60px;
+  margin: -80px auto 80px;
   background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  padding: 50px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
-h1 {
+.container h2 {
   font-family: "Montserrat", sans-serif;
   color: var(--primary);
   margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 
-/* MENSAJE ERROR */
+/* MENSAJES */
 .mensaje-error {
   background-color: #ffd6d9;
   color: #991b1b;
@@ -127,16 +165,19 @@ label {
 }
 input[type="text"], select, input[type="file"] {
   width: 100%;
-  padding: 10px 14px;
-  border-radius: var(--radius);
-  border: 1.5px solid #ddd;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e2e2;
+  background-color: #fafafa;
   font-size: 0.95rem;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
 }
 input:focus, select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.3);
+  background-color: #fff;
 }
 .form-help {
   font-size: 0.8rem;
@@ -144,7 +185,7 @@ input:focus, select:focus {
   margin-top: 4px;
 }
 
-/* PREVIEW DE IMAGEN */
+/* PREVIEW IMAGEN */
 .image-preview {
   margin-top: 10px;
 }
@@ -156,7 +197,7 @@ input:focus, select:focus {
   border-radius: var(--radius);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 /* BOTONES */
@@ -185,24 +226,22 @@ input:focus, select:focus {
   color: var(--primary);
 }
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
 }
 
 /* RESPONSIVE */
 @media (max-width: 700px) {
-  .form-row {
-    flex-direction: column;
-  }
-  .container {
-    padding: 30px 25px;
-  }
+  .form-row { flex-direction: column; }
+  .container { padding: 30px 25px; }
+  .hero h1 { font-size: 2rem; }
 }
 </style>
 </head>
 
 <body>
-<!-- NAVBAR -->
+
+<!-- 🔸 NAVBAR -->
 <header>
   <nav>
     <div class="logo"><i class="fa-solid fa-paw"></i> PetAdopt</div>
@@ -218,9 +257,15 @@ input:focus, select:focus {
   </nav>
 </header>
 
-<!-- FORMULARIO PRINCIPAL -->
+<!-- 🔸 HERO -->
+<section class="hero">
+  <h1><i class="fa-solid fa-heart"></i> Inscribe a tu Mascota</h1>
+  <p>Comparte amor y esperanza: ¡registra una nueva vida lista para ser adoptada!</p>
+</section>
+
+<!-- 🔸 FORMULARIO -->
 <div class="container">
-  <h1><i class="fa-solid fa-paw"></i> Agregar Mascota</h1>
+  <h2><i class="fa-solid fa-paw"></i> Agregar Mascota</h2>
 
   <% if (request.getParameter("error") != null) { %>
     <div class="mensaje-error">
@@ -295,13 +340,13 @@ function previewImage(input) {
 
 document.querySelector('form').addEventListener('submit', function(e) {
   const fileInput = document.getElementById('foto');
-  const maxSize = 20 * 1024 * 1024; // 20MB
+  const maxSize = 20 * 1024 * 1024;
   if (fileInput.files[0] && fileInput.files[0].size > maxSize) {
     e.preventDefault();
     alert('El archivo es demasiado grande. Tamaño máximo: 20MB.');
-    return false;
   }
 });
 </script>
+
 </body>
 </html>
